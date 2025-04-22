@@ -1,0 +1,115 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Summary section styles */
+.dashboard-summary, .quick-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+}
+
+.summary-card h3 {
+    margin: 0;
+    color: #444;
+}
+
+.summary-card p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Chart Section Styles */
+.visualizations {
+    margin-top: 40px;
+}
+
+.chart-section {
+    margin-bottom: 40px;
+}
+
+.chart-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.chart {
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 5px;
+    height: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #b8b8b8;
+    padding: 10px 0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    border-right: 2px solid #444;
+}
+
+.dropdown:last-child {
+    border-right: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
