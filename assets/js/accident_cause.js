@@ -1,30 +1,25 @@
 
 const ctx = document.getElementById('accidentCause');
 
-new Chart(ctx, {
+const config = {
   type: 'bar',
   data: {
     labels: ['Weather', 'Mechanical Failure', 'Distracted Driving', 'Speeding', 'Drunk Driving'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Accidents',
+      data: [12, 19, 3, 5, 2],
       borderWidth: 1
     }]
   },
   options: {
+    indexAxis: 'y',
+    responsive: true,
     scales: {
-      y: {
+      x: {
         beginAtZero: true
       }
     }
   }
-});
-
-
-const config = {
-  type: 'bar',
-  data,
-  options: {
-    indexAxis: 'y',
-  }
 };
+
+new Chart(ctx, config);

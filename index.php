@@ -136,12 +136,14 @@
          <!-- Main -->
         <main class="main">
             <div class="charts-container">
-                <div class="div-style">
-                    <canvas class="charts-card" id="accidentCause"></canvas>
+                <div class="charts-card div-style">
+                    <h4>Most Common Accident Cause</h4>
+                    <canvas id="accidentCause"></canvas>
                 </div>
                 
                 <div class="div-style">
-                    <canvas class="" id="myChart"></canvas>
+                    <h4>Accidents Over Time</h4>
+                    <canvas id="myChart"></canvas>
                 </div>
                 
                 <div class="div-style">
