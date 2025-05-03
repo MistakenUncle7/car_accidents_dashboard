@@ -61,12 +61,12 @@ const timeGraph = document.getElementById('myChart');
 const timeConfig = {
   type: 'line',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     datasets: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
       fill: true,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: '#5d88be',
       borderWidth: 1
     }]
   },
@@ -84,18 +84,18 @@ new Chart(timeGraph, timeConfig);
 
 
 
-// Weather Conditions Chart
+// Cars Involved Chart
 const carsGraph = document.getElementById("carsInvolved");
 
 const carsConfig = {
     type: 'pie',
     data: {
-        labels: ['Red', 'Blue', 'Yellow'], // Labels for each segment
+        labels: ['1', '2', '3', '4'],
         datasets: [{
-            label: 'My Pie Chart', // Title of the dataset
-            data: [10, 20, 30], // Values for each segment
-            backgroundColor: ['red', 'blue', 'yellow'], // Colors for each segment
-            borderColor: ['black', 'black', 'black'], // Border color for each segment
+            label: '',
+            data: [10, 20, 30, 10],
+            backgroundColor: ['#213f5b', '#33597c', '#678aa9', '#6d89a0'],
+            borderColor: ['black', 'black', 'black'],
         }]
     }
 }
