@@ -1,127 +1,163 @@
+<?php include 'assets/php/connection.php'?>
+<?php include 'assets/php/select.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="assets/icons/favicon.svg">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
 </head>
 <body>
+    <h1 class="title">Road Accidents Dashboard</h1>
     <div class="grid-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="menu-icon" onclick="openSidebar()">
-                <span class="material-icons-outlined">menu</span>
+        <!-- Form -->
+        <form class="form container-fluid div-style">
+            <div class="row row-cols-3">
+
+                <div class="col mb-2">
+                    <label for="country">Country:</label>
+                    <select class="form-select" name="country" id="country">
+                        <option value="" disable selected hidden>Select</option>
+                        <?php
+                        $sql = "SELECT DISTINCT country FROM `locations`";
+                        $result = $conn->query($sql);
+                        getOptions($result, "country");
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col mb-2">
+                <label for="year">Year:</label>
+                    <select class="form-select" name="year" id="year">
+                        <option value="" disable selected hidden>Select</option>
+                        <?php
+                        $sql = "SELECT DISTINCT accidentYear FROM `accidents`";
+                        $result = $conn->query($sql);
+                        getOptions($result, "accidentYear");
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col mb-2">
+                    <label for="month">Month:</label>
+                    <select class="form-select" name="month" id="month">
+                    <option value="" disable selected hidden>Select</option>
+                    <?php
+                        $sql = "SELECT DISTINCT month FROM `accidents`";
+                        $result = $conn->query($sql);
+                        getOptions($result, "month");
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="gender">Driver Gender:</label>
+                    <select class="form-select" name="gender" id="gender">
+                        <option value="" disable selected hidden>Select</option>
+                        <?php
+                        $sql = "SELECT DISTINCT driverGender FROM `drivers`";
+                        $result = $conn->query($sql);
+                        getOptions($result, "driverGender");
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="severity">Accident Severity:</label>
+                    <select class="form-select" name="severity" id="severity">
+                        <option value="" disable selected hidden>Select</option>
+                        <?php
+                        $sql = "SELECT DISTINCT accidentSeverity FROM `accidents`";
+                        $result = $conn->query($sql);
+                        getOptions($result, "accidentSeverity");
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label for="roadType">Road Type:</label>
+                    <select class="form-select" name="roadType" id="roadType">
+                        <option value="" disable selected hidden>Select</option>
+                        <?php
+                        $sql = "SELECT DISTINCT roadType FROM `locations`";
+                        $result = $conn->query($sql);
+                        getOptions($result, "roadType");
+                        ?>
+                    </select>
+                </div>
+                
             </div>
-            <div class="header-left">
-                <span class="material-icons-outlined">search</span>
-            </div>
-            <div class="header-right">
-                <span class="material-icons-outlined">notifications</span>
-                <span class="material-icons-outlined">email</span>
-                <span class="material-icons-outlined">account_circle</span>
-            </div>
-        </header>
+        </form>
 
-        <!-- Sidebar -->
-        <aside id="sidebar">
-            <div class="sidebar-title">
-                <div class="sidebar-brand">
-                    <span class="material-icons-outlined">shopping_cart</span>
-                </div>
-                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-            </div>
+        <!-- Cards -->
+        <div class="card-container">
+            <div class="card-section">
 
-            <ul class="sidebar-list">
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">dashboard</span> Dashboard
-                </li>
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">inventory_2</span> Products
-                </li>
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">category</span> Categories
-                </li>
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">groups</span> Customers
-                </li>
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">fact_check</span> Inventory
-                </li>
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">poll</span> Reports
-                </li>
-                <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">settings</span> Settings
-                </li>
-            </ul>
-        </aside>
-
-        <!-- Main -->
-        <main class="main-container">
-
-            <div class="main-title">
-                <h2>DASHBOARD</h2>
-            </div>
-
-            <div class="main-cards">
-
-                <div class="card">
-                    <div class="card-inner">
-                        <h3>PRODUCTS</h3>
-                        <span class="material-icons-outlined">inventory_2</span>
-                    </div>
-                    <h1>249</h1>
+                <div class="card-element div-style">
+                    <h2>123,456</h2>
+                    Total Accidents
                 </div>
 
-                <div class="card">
-                    <div class="card-inner">
-                        <h3>CATEGORIES</h3>
-                        <span class="material-icons-outlined">category</span>
-                    </div>
-                    <h1>25</h1>
+                <div class="card-element div-style">
+                    <h2>7,890</h2>
+                    Total Fatalities
                 </div>
 
-                <div class="card">
-                    <div class="card-inner">
-                        <h3>CUSTOMERS</h3>
-                        <span class="material-icons-outlined">groups</span>
-                    </div>
-                    <h1>1500</h1>
+                <div class="card-element div-style">
+                    <h2>$12.3M</h2>
+                    Economic Loss
                 </div>
 
-                <div class="card">
-                    <div class="card-inner">
-                        <h3>ALERTS</h3>
-                        <span class="material-icons-outlined">notification_important</span>
-                    </div>
-                    <h1>56</h1>
+                <div class="card-element div-style">
+                    <h2>2024</h2>
+                    Placeholder
                 </div>
 
             </div>
+        </div>
 
-            <div class="charts">
+        <!-- Bar -->
+        <div class="bar div-style">
 
-                <div class="charts-card">
-                    <h2 class="chart-title">Top 5 Products</h2>
-                    <div id="bar-chart"></div>
+        </div>
+        
+         <!-- Main -->
+        <main class="main">
+            <div class="charts-container">
+                <div class="div-style">
+                    <canvas class="charts-card" id="accidentCause"></canvas>
                 </div>
-
-                <div class="charts-card">
-                    <h2 class="chart-title">Purchase and Sales Order</h2>
-                    <div id="area-chart"></div>
+                
+                <div class="div-style">
+                    <canvas class="charts-card" id="myChart"></canvas>
                 </div>
-
+                
+                <div class="div-style">
+                    <canvas class="charts-card" id="myChart"></canvas>
+                </div>
             </div>
         </main>
+
+        <!-- Pie Chart -->
+        <div class ="pie div-style">
+
+        </div>
+        
+
     </div>
 
-    <!-- Chart.js -->
+    <!-- Chart js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Custom JS -->
-    <script src="assets/js/scripts.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <!-- JS Scripts -->
+    <script src="assets/js/accident_cause.js"></script>
+    <script src="assets/js/test.js"></script>
 </body>
 </html>
