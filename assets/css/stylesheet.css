@@ -11,9 +11,9 @@ body {
     grid-template-columns: 1fr 1fr 1fr 2fr;
     grid-template-areas:
     "form form form form form"
-    "card card card bar bar"
-    "main main main bar bar"
-    "main main main pie pie";
+    "card card card sidebar sidebar"
+    "main main main sidebar sidebar";
+    /* "main main main pie pie"; */
     gap: 15px;
 }
 
@@ -56,9 +56,9 @@ body {
     flex: 1;
 }
 
-/* Bar */
-.bar {
-    grid-area: bar;
+/* Sidear */
+.sidebar {
+    grid-area: sidebar;
 }
 
 .pie {

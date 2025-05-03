@@ -128,34 +128,43 @@
             </div>
         </div>
 
-        <!-- Bar -->
-        <div class="bar div-style">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="charts-container">
 
+                <div class="charts-card div-style">
+                    <h4>Most Common Accident Cause</h4>
+                    <canvas id="accidentCause"></canvas>
+                </div>
+
+                <div class="charts-card div-style"> 
+                    <h4>Cars Involved</h4>
+                    <canvas id="carsInvolved"></canvas>
+                </div>
+
+            </div>
         </div>
         
          <!-- Main -->
         <main class="main">
             <div class="charts-container">
+
                 <div class="charts-card div-style">
-                    <h4>Most Common Accident Cause</h4>
-                    <canvas id="accidentCause"></canvas>
+                    <h4>Top Countries With Most Accidents</h4>
+                    <canvas id="topCountries"></canvas>
                 </div>
                 
                 <div class="div-style">
                     <h4>Accidents Over Time</h4>
                     <canvas id="myChart"></canvas>
                 </div>
-                
-                <div class="div-style">
-                    <canvas class="charts-card" id="myChart"></canvas>
-                </div>
             </div>
         </main>
 
         <!-- Pie Chart -->
-        <div class ="pie div-style">
+        <!-- <div class ="pie div-style">
 
-        </div>
+        </div> -->
         
 
     </div>
@@ -165,7 +174,9 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <!-- JS Scripts -->
-    <script src="assets/js/accident_cause.js"></script>
-    <script src="assets/js/test.js"></script>
+    <script src="assets/js/graphs.js"></script>
+    <script src="assets/js/country_accidents.js"></script>
+    <script src="assets/js/accident_time.js"></script>
+    <script src="assets/js/weather.js"></script>
 </body>
 </html>
