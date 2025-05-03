@@ -20,6 +20,7 @@ body {
 .div-style {
     background-color: rgba(51,56,62,255);
     border-radius: 15px;
+    padding: 20px;
     color: #f4f5f9;
 }
 
@@ -51,7 +52,6 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 20px;
     border-radius: 15px;
     flex: 1;
 }
@@ -77,6 +77,5 @@ body {
 }
 
 .charts-card {
-    padding: 20px;
     border-radius: 15px;
 }

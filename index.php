@@ -24,6 +24,7 @@
                     <label for="country">Country:</label>
                     <select class="form-select" name="country" id="country">
                         <option value="" disable selected hidden>Select</option>
+                        <option value="">Any</option>
                         <?php
                         $sql = "SELECT DISTINCT country FROM `locations`";
                         $result = $conn->query($sql);
@@ -36,6 +37,7 @@
                 <label for="year">Year:</label>
                     <select class="form-select" name="year" id="year">
                         <option value="" disable selected hidden>Select</option>
+                        <option value="">Any</option>
                         <?php
                         $sql = "SELECT DISTINCT accidentYear FROM `accidents`";
                         $result = $conn->query($sql);
@@ -48,6 +50,7 @@
                     <label for="month">Month:</label>
                     <select class="form-select" name="month" id="month">
                     <option value="" disable selected hidden>Select</option>
+                    <option value="">Any</option>
                     <?php
                         $sql = "SELECT DISTINCT month FROM `accidents`";
                         $result = $conn->query($sql);
@@ -60,6 +63,7 @@
                     <label for="gender">Driver Gender:</label>
                     <select class="form-select" name="gender" id="gender">
                         <option value="" disable selected hidden>Select</option>
+                        <option value="">Any</option>
                         <?php
                         $sql = "SELECT DISTINCT driverGender FROM `drivers`";
                         $result = $conn->query($sql);
@@ -72,6 +76,7 @@
                     <label for="severity">Accident Severity:</label>
                     <select class="form-select" name="severity" id="severity">
                         <option value="" disable selected hidden>Select</option>
+                        <option value="">Any</option>
                         <?php
                         $sql = "SELECT DISTINCT accidentSeverity FROM `accidents`";
                         $result = $conn->query($sql);
@@ -84,6 +89,7 @@
                     <label for="roadType">Road Type:</label>
                     <select class="form-select" name="roadType" id="roadType">
                         <option value="" disable selected hidden>Select</option>
+                        <option value="">Any</option>
                         <?php
                         $sql = "SELECT DISTINCT roadType FROM `locations`";
                         $result = $conn->query($sql);
@@ -135,7 +141,7 @@
                 </div>
                 
                 <div class="div-style">
-                    <canvas class="charts-card" id="myChart"></canvas>
+                    <canvas class="" id="myChart"></canvas>
                 </div>
                 
                 <div class="div-style">

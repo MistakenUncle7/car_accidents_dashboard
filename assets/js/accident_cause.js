@@ -1,10 +1,10 @@
 
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById('accidentCause');
 
 new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Weather', 'Mechanical Failure', 'Distracted Driving', 'Speeding', 'Drunk Driving'],
     datasets: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
@@ -19,3 +19,12 @@ new Chart(ctx, {
     }
   }
 });
+
+
+const config = {
+  type: 'bar',
+  data,
+  options: {
+    indexAxis: 'y',
+  }
+};
