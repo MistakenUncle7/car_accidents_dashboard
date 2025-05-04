@@ -70,6 +70,18 @@ document.addEventListener("DOMContentLoaded", function() {
         .then((response) => response.json())
         .then((data) => {
             console.log("Graphs PHP Response:", data);
+
+            // Update the Top countries graph
+            updateCountriesGraph(data.countryAccident);
+
+            // Update the most common accident cause graph
+            updateAccidentCauseGraph(data.accidentType);
+
+            // Update the cars involved graph
+            updateCarsGraph(data.involvedCars);
+
+            // Update the accidents over time graph
+            updateTimeGraph(data.crashDay);
         })
         .catch((error) => console.error("Error:", error));
 

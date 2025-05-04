@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <link rel="icon" href="assets/icons/favicon.svg">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
 </head>
@@ -106,23 +107,23 @@
             <div class="card-section">
 
                 <div class="card-element div-style">
-                    <h2>131,999</h2>
-                    Total Accidents
+                    <!-- <h2>131,999</h2>
+                    Total Accidents -->
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>263,394</h2>
-                    Total Fatalities
+                    <!-- <h2>263,394</h2>
+                    Total Fatalities -->
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>$98,372M</h2>
-                    Economic Loss
+                    <!-- <h2>$98,372M</h2>
+                    Economic Loss -->
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>593,418</h2>
-                    Insurance Claims
+                    <!-- <h2>593,418</h2>
+                    Insurance Claims -->
                 </div>
 
             </div>
@@ -148,23 +149,22 @@
          <!-- Main -->
         <main class="main">
             <div class="charts-container">
-
-                <div class="charts-card div-style">
-                    <h4>Top Countries With Most Accidents</h4>
-                    <canvas id="topCountries"></canvas>
-                </div>
                 
                 <div class="div-style">
                     <h4>Accidents Over Time</h4>
                     <canvas id="myChart"></canvas>
                 </div>
+
+                <div class="charts-card div-style">
+                    <h4>Top Countries With Most Accidents</h4>
+                    <canvas id="topCountries"></canvas>
+                </div>
+
             </div>
         </main>     
 
     </div>
 
-    <!-- Chart js -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <!-- JS Scripts -->

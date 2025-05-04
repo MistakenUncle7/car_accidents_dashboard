@@ -1,17 +1,14 @@
 /* Plotted graphs using Chart.js */
 
 // Top Countries With Most Accidents Chart
-const countriesGraph = document.getElementById('topCountries');
-
 const configCountries = {
   type: 'bar',
   data: {
-    labels: ['USA', 'UK', 'Canada', 'India', 'China', 'Japan', 'Russia', 'Brazil', 'Germany',
-        'Australia'
+    labels: ['Australia', 'Brazil', 'Canada', 'China', 'Germany', 'India', 'Japan', 'Russia', 'UK', 'USA'
     ],
     datasets: [{
-      label: 'Accident Count',
-      data: [12, 19, 3, 5, 2, 6, 3, 9, 6, 3],
+      label: '# Of Accidents',
+      data: [],
       borderWidth: 1
     }]
   },
@@ -25,20 +22,16 @@ const configCountries = {
     }
   }
 };
-
-new Chart(countriesGraph, configCountries);
 
 
 // Most Common Accident Cause
-const accidentGraph = document.getElementById('accidentCause');
-
 const configAccident = {
   type: 'bar',
   data: {
-    labels: ['Weather', 'Mechanical Failure', 'Distracted Driving', 'Speeding', 'Drunk Driving'],
+    labels: [],
     datasets: [{
-      label: 'Accident Count',
-      data: [12, 19, 3, 5, 2],
+      label: '# Of Accidents',
+      data: [],
       borderWidth: 1
     }]
   },
@@ -53,18 +46,15 @@ const configAccident = {
   }
 };
 
-new Chart(accidentGraph, configAccident);
-
 // Accidents Over Time Graph
-const timeGraph = document.getElementById('myChart');
 
 const timeConfig = {
   type: 'line',
   data: {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    labels: [],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: '# Of Accidents',
+      data: [],
       fill: true,
       borderColor: '#5d88be',
       borderWidth: 1
@@ -77,27 +67,68 @@ const timeConfig = {
       }
     }
   }
-
+  
 }
-
-new Chart(timeGraph, timeConfig);
-
 
 
 // Cars Involved Chart
-const carsGraph = document.getElementById("carsInvolved");
-
 const carsConfig = {
-    type: 'pie',
-    data: {
-        labels: ['1', '2', '3', '4'],
-        datasets: [{
-            label: '',
-            data: [10, 20, 30, 10],
-            backgroundColor: ['#213f5b', '#33597c', '#678aa9', '#6d89a0'],
-            borderColor: ['black', 'black', 'black'],
-        }]
+  type: 'pie',
+  data: {
+    labels: [],
+    datasets: [{
+      label: '# Of Accidents',
+      data: [],
+      backgroundColor: ['#213f5b', '#33597c', '#678aa9', '#6d89a0'],
+      borderColor: ['black', 'black', 'black'],
+    }]
+  },
+  options: {
+    plugins: {
+      datalabels: {
+        formatter: (value, context) => {
+          const dataset = context.chart.data.datasets[0].data.map(Number);
+          const total = dataset.reduce((acc, val) => acc + val, 0);
+          const percentage = ((value / total) * 100).toFixed(1);
+          return `${percentage}%`;
+        },
+        color: '#ededeb',
+        font: {
+          weight: 'bold',
+          size: 30
+        }
+      }
     }
+  },
+  plugins: [ChartDataLabels]
 }
 
-new Chart(carsGraph, carsConfig)
+// Charts initialization
+const countriesGraph = new Chart(document.getElementById('topCountries'), configCountries);
+const accidentGraph = new Chart(document.getElementById('accidentCause'), configAccident);
+const carsGraph = new Chart(document.getElementById("carsInvolved"),carsConfig);
+const timeGraph = new Chart(document.getElementById('myChart'), timeConfig);
+
+/* Functions to update the charts */
+function updateCountriesGraph(countryAccident) {
+  countriesGraph.data.datasets[0].data = countryAccident.count
+  countriesGraph.update();
+}
+
+function updateAccidentCauseGraph(accidentType) {
+  accidentGraph.data.labels = accidentType.accidentCause;
+  accidentGraph.data.datasets[0].data = accidentType.count;
+  accidentGraph.update();
+}
+
+function updateCarsGraph(involvedCars) {
+  carsGraph.data.labels = involvedCars.involvedCars;
+  carsGraph.data.datasets[0].data = involvedCars.count;
+  carsGraph.update();
+}
+
+function updateTimeGraph(crashDay) {
+  timeGraph.data.labels = crashDay.crashDay;
+  timeGraph.data.datasets[0].data = crashDay.count;
+  timeGraph.update();
+}

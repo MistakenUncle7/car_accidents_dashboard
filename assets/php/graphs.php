@@ -46,17 +46,16 @@ if (!empty($whereClauses)) {
 // Top countries with most accidents
 $countriesAccident = "
 SELECT country, COUNT(accidents.accidentId) as countryAccident $baseQuery 
-GROUP BY country";
+GROUP BY country
+ORDER BY country";
 $countriesAccidentResult = $conn->query($countriesAccident);
 
 $countriesAccidentData = [
-    "country" => [],
     "count" => []
 ]; 
 
 if($countriesAccidentResult) {
     while ($row = $countriesAccidentResult->fetch_assoc()) {
-        $countriesAccidentData["country"][] = $row["country"];
         $countriesAccidentData["count"][] = $row["countryAccident"];
     }
 }
@@ -64,7 +63,8 @@ if($countriesAccidentResult) {
 // Most common accident cause
 $commonAccident = "
 SELECT accidentCause, COUNT(accidents.accidentId) as accidentQuant $baseQuery
-GROUP BY accidentCause";
+GROUP BY accidentCause
+ORDER BY accidentCause";
 $commonAccidentResult = $conn->query($commonAccident);
 
 $commonAccidentData = [
@@ -82,17 +82,18 @@ if($commonAccidentResult) {
 // Number of cars involved
 $carsInvolved = "
 SELECT numCarsInvolved, COUNT(accidents.accidentId) as numCars $baseQuery
-GROUP BY numCarsInvolved";
+GROUP BY numCarsInvolved
+ORDER BY numCarsInvolved";
 $carsInvolvedResult = $conn->query($carsInvolved);
 
 $carsInvolvedData = [
-    "numCars" => [],
+    "involvedCars" => [],
     "count" => []
 ]; 
 
 if($carsInvolvedResult) {
     while ($row = $carsInvolvedResult->fetch_assoc()) {
-        $carsInvolvedData["numCars"][] = $row["numCarsInvolved"];
+        $carsInvolvedData["involvedCars"][] = $row["numCarsInvolved"];
         $carsInvolvedData["count"][] = $row["numCars"];
     }
 }
@@ -100,17 +101,26 @@ if($carsInvolvedResult) {
 // Accidents over time
 $accidentTime = "
 SELECT dayOfWeek, COUNT(accidents.accidentId) as crashes $baseQuery
-GROUP BY dayOfWeek";
+GROUP BY dayOfWeek
+ORDER BY CASE dayOfWeek
+    WHEN 'Monday' THEN 1
+    WHEN 'Tuesday' THEN 2
+    WHEN 'Wednesday' THEN 3
+    WHEN 'Thursday' THEN 4
+    WHEN 'Friday' THEN 5
+    WHEN 'Saturday' THEN 6
+    WHEN 'Sunday' THEN 7
+END";
 $accidentTimeResult = $conn->query($accidentTime);
 
 $accidentTimeData = [
-    "weekDay" => [],
+    "crashDay" => [],
     "count" => []
 ]; 
 
 if($accidentTimeResult) {
     while ($row = $accidentTimeResult->fetch_assoc()) {
-        $accidentTimeData["weekDay"][] = $row["dayOfWeek"];
+        $accidentTimeData["crashDay"][] = $row["dayOfWeek"];
         $accidentTimeData["count"][] = $row["crashes"];
     }
 }
@@ -118,9 +128,9 @@ if($accidentTimeResult) {
 // Combine all results into a single response
 $response = [
     "countryAccident" => $countriesAccidentData,
-    "accidentQuant" => $commonAccidentData,
-    "numCars" => $carsInvolvedData,
-    "crashes" => $accidentTimeData
+    "accidentType" => $commonAccidentData,
+    "involvedCars" => $carsInvolvedData,
+    "crashDay" => $accidentTimeData
 ];
 
 // Return the results as JSON
