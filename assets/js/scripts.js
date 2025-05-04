@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function handleFilterChange() {
-        // Get all selected values from the form
+        // Get all select values from the form
         const filters = {
           country: document.getElementById('country').value,
           year: document.getElementById('year').value,
@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", function() {
           roadType: document.getElementById('roadType').value
         };
         console.log('Selected filters:', filters);
+
+        fetch('assets/php/cards.php', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(filters)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            // Esto afecta al index
+        })
+        .catch((error) => console.error("Error:", error));
     }
 
 });

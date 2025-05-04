@@ -2,6 +2,7 @@
 
 include 'connection.php';
 
+// Function to get options for the select fetched from the db
 function getOptions($result, $colName) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -11,7 +12,5 @@ function getOptions($result, $colName) {
         echo "<option value=''>No hay resultados</option>";
     }
 }
-
-// Base query
 
 ?>

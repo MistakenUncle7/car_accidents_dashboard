@@ -1,5 +1,7 @@
 <?php include 'assets/php/connection.php'?>
-<?php include 'assets/php/sql.php'?>
+<?php include 'assets/php/select.php'?>
+<?php include 'assets/php/cards.php'?>
+<?php include 'assets/php/graphs.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +25,7 @@
                 <div class="col mb-2">
                     <label for="country">Country:</label>
                     <select class="form-select" name="country" id="country">
-                        <option value="" disable selected hidden>Select</option>
+                        <option value="" disabled selected hidden>Select</option>
                         <option value="">Any</option>
                         <?php
                         $sql = "SELECT DISTINCT country FROM `locations`";
@@ -121,8 +123,8 @@
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>2024</h2>
-                    Placeholder
+                    <h2>999</h2>
+                    Insurance Claims
                 </div>
 
             </div>
