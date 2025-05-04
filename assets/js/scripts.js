@@ -22,7 +22,46 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         console.log('Selected filters:', filters);
 
+        // Card section
         fetch('assets/php/cards.php', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(filters)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            const cardSection = document.querySelector("card-section");
+
+            // Update the stats dynamically
+            cardSection.innerHTML = `
+                <div class="card-element div-style">
+                    <h2>${data.accidents || 0}</h2>
+                    Total Accidents
+                </div>
+
+                <div class="card-element div-style">
+                    <h2>${data.fatalities || 0}</h2>
+                    Total Fatalities
+                </div>
+
+                <div class="card-element div-style">
+                    <h2>${data.economicLoss || 0}</h2>
+                    Economic Loss
+                </div>
+
+                <div class="card-element div-style">
+                    <h2>${data.claims || 0}</h2>
+                    Insurance Claims
+                </div>
+            `;
+        })
+        .catch((error) => console.error("Error:", error));
+
+        // Graph section
+        fetch('assets/php/graphs.php', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -34,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Esto afecta al index
         })
         .catch((error) => console.error("Error:", error));
+
     }
 
 });

@@ -44,20 +44,34 @@ $totalAccidentsResult = $conn->query($totalAccidents);
 $totalAccidents = $totalAccidentsResult->fetch_assoc()["accidents"] ?? 0;
 
 //Total fatalities
-$totalFatalities = "SELECT SUM(accidents.numberOfFatalites) AS fatalities $baseQuery";
+$totalFatalities = "SELECT TRUNCATE(SUM(accidents.numberOfFatalities), 3) AS fatalities $baseQuery";
 $totalFatalitiesResult = $conn->query($totalFatalities);
 $totalFatalities = $totalFatalitiesResult->fetch_assoc()["fatalities"] ?? 0;
 
 // Economic loss
-$economicLoss = "SELECT SUM(statistics.economicLoss) AS money $baseQuery";
+$economicLoss = "SELECT 
+  CASE
+    WHEN SUM(statistics.economicLoss) >= 10000 THEN TRUNCATE(SUM(statistics.economicLoss) / POW(10, FLOOR(LOG10(SUM(statistics.economicLoss))) - 4), 0)
+    WHEN SUM(statistics.economicLoss) >= 1 THEN TRUNCATE(SUM(statistics.economicLoss), 5 - FLOOR(LOG10(SUM(statistics.economicLoss))) - 1)
+    ELSE TRUNCATE(SUM(statistics.economicLoss), 4)
+  END AS money $baseQuery";
 $economicLossResult = $conn->query($economicLoss);
-$economicLoss = $economicLossResult->fetch_assoc()["economicLoss"] ?? 0;
+$economicLoss = $economicLossResult->fetch_assoc()["money"] ?? 0;
 
 // Insurance claims
-$insuranceClaims = "SELECT SUM(accidents.inusuranceClaims) AS claims $baseQuery";
+$insuranceClaims = "SELECT SUM(accidents.insuranceClaims) AS claims $baseQuery";
 $insuranceClaimsResult = $conn->query($insuranceClaims);
-$insuranceClaims = $economicLossResult->fetch_assoc()["claims"] ?? 0;
+$insuranceClaims = $insuranceClaimsResult->fetch_assoc()["claims"] ?? 0;
 
-//
+// Combine all results into a single response
+$response = [
+    "accidents" => $totalAccidents,
+    "fatalities" => $totalFatalities,
+    "economicLoss" => $economicLoss,
+    "claims" => $insuranceClaims
+];
 
+// Return the results as JSON
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

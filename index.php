@@ -1,7 +1,5 @@
 <?php include 'assets/php/connection.php'?>
 <?php include 'assets/php/select.php'?>
-<?php include 'assets/php/cards.php'?>
-<?php include 'assets/php/graphs.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
