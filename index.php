@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="charts-card div-style"> 
-                    <h4>Cars Involved</h4>
+                    <h4>Number Of Cars Involved</h4>
                     <canvas id="carsInvolved"></canvas>
                 </div>
 
@@ -170,13 +170,11 @@
     </div>
 
     <!-- Chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <!-- JS Scripts -->
     <script src="assets/js/graphs.js"></script>
-    <script src="assets/js/country_accidents.js"></script>
-    <script src="assets/js/accident_time.js"></script>
-    <script src="assets/js/weather.js"></script>
+    <script src="assets/js/scripts.js"></script>
 </body>
 </html>

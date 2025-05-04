@@ -12,4 +12,6 @@ function getOptions($result, $colName) {
     }
 }
 
+// Base query
+
 ?>

@@ -1,9 +1,26 @@
-// Event listeners when changing the filters
 
-const countrySelect = document.getElementById("country");
-const yearSelect = document.getElementById("year");
-const monthSelect = document.getElementById("month");
-const genderSelect = document.getElementById("gender");
-const severitySelect = document.getElementById("severity");
-const roadTypeSelect = document.getElementById("roadType");
 
+// Wait to fully load the DOM
+document.addEventListener("DOMContentLoaded", function() {
+    // Select all form select elements inside the form
+    const form = document.querySelector('.form');
+    const selects = form.querySelectorAll('select');
+
+    selects.forEach(select => {
+        select.addEventListener('change', handleFilterChange);
+    });
+
+    function handleFilterChange() {
+        // Get all selected values from the form
+        const filters = {
+          country: document.getElementById('country').value,
+          year: document.getElementById('year').value,
+          month: document.getElementById('month').value,
+          gender: document.getElementById('gender').value,
+          severity: document.getElementById('severity').value,
+          roadType: document.getElementById('roadType').value
+        };
+        console.log('Selected filters:', filters);
+    }
+
+});
