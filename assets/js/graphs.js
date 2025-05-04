@@ -37,7 +37,7 @@ const configAccident = {
   data: {
     labels: ['Weather', 'Mechanical Failure', 'Distracted Driving', 'Speeding', 'Drunk Driving'],
     datasets: [{
-      label: 'Accident num',
+      label: 'Accident Count',
       data: [12, 19, 3, 5, 2],
       borderWidth: 1
     }]

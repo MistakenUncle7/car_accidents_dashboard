@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log("PHP Response:", data);
             const cardSection = document.querySelector(".card-section");
 
             // Update the stats dynamically
@@ -70,10 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then((response) => response.json())
         .then((data) => {
-            // Aqui va lo de ustedes
+            // Aqui va lo de ustedes (Lo que reciben de PHP)
         })
         .catch((error) => console.error("Error:", error)); */
 
     }
-
+    // Call function when the page loads
+    handleFilterChange();
 });

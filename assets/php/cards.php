@@ -38,6 +38,7 @@ if (!empty($whereClauses)) {
 }
 
 /* CARDS QUERIES */
+
 // Total accidents
 $totalAccidents = "SELECT FORMAT(COUNT(accidents.accidentId), 0) AS accidents $baseQuery";
 $totalAccidentsResult = $conn->query($totalAccidents);
