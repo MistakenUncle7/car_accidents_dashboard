@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch((error) => console.error("Error:", error));
 
-        /* // Graph section
+        // Graph section
         fetch('assets/php/graphs.php', {
             method: "POST",
             headers: {
@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then((response) => response.json())
         .then((data) => {
-            // Aqui va lo de ustedes (Lo que reciben de PHP)
+            console.log("Graphs PHP Response:", data);
         })
-        .catch((error) => console.error("Error:", error)); */
+        .catch((error) => console.error("Error:", error));
 
     }
     // Call function when the page loads
