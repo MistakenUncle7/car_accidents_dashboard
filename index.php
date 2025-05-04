@@ -106,22 +106,22 @@
             <div class="card-section">
 
                 <div class="card-element div-style">
-                    <h2>123,456</h2>
+                    <h2>131,999</h2>
                     Total Accidents
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>7,890</h2>
+                    <h2>263,394</h2>
                     Total Fatalities
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>$12.3M</h2>
+                    <h2>$98,372M</h2>
                     Economic Loss
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>999</h2>
+                    <h2>593,418</h2>
                     Insurance Claims
                 </div>
 
@@ -159,13 +159,7 @@
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
-        </main>
-
-        <!-- Pie Chart -->
-        <!-- <div class ="pie div-style">
-
-        </div> -->
-        
+        </main>     
 
     </div>
 

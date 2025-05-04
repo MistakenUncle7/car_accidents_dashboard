@@ -39,27 +39,29 @@ if (!empty($whereClauses)) {
 
 /* CARDS QUERIES */
 // Total accidents
-$totalAccidents = "SELECT COUNT(accidents.accidentId) AS accidents $baseQuery";
+$totalAccidents = "SELECT FORMAT(COUNT(accidents.accidentId), 0) AS accidents $baseQuery";
 $totalAccidentsResult = $conn->query($totalAccidents);
 $totalAccidents = $totalAccidentsResult->fetch_assoc()["accidents"] ?? 0;
 
 //Total fatalities
-$totalFatalities = "SELECT TRUNCATE(SUM(accidents.numberOfFatalities), 3) AS fatalities $baseQuery";
+$totalFatalities = "SELECT FORMAT(SUM(accidents.numberOfFatalities), 0) AS fatalities $baseQuery";
 $totalFatalitiesResult = $conn->query($totalFatalities);
 $totalFatalities = $totalFatalitiesResult->fetch_assoc()["fatalities"] ?? 0;
 
 // Economic loss
 $economicLoss = "SELECT 
-  CASE
-    WHEN SUM(statistics.economicLoss) >= 10000 THEN TRUNCATE(SUM(statistics.economicLoss) / POW(10, FLOOR(LOG10(SUM(statistics.economicLoss))) - 4), 0)
-    WHEN SUM(statistics.economicLoss) >= 1 THEN TRUNCATE(SUM(statistics.economicLoss), 5 - FLOOR(LOG10(SUM(statistics.economicLoss))) - 1)
-    ELSE TRUNCATE(SUM(statistics.economicLoss), 4)
-  END AS money $baseQuery";
+  FORMAT(
+    CASE
+      WHEN SUM(statistics.economicLoss) >= 10000 THEN TRUNCATE(SUM(statistics.economicLoss) / POW(10, FLOOR(LOG10(SUM(statistics.economicLoss))) - 4), 0)
+      WHEN SUM(statistics.economicLoss) >= 1 THEN TRUNCATE(SUM(statistics.economicLoss), 5 - FLOOR(LOG10(SUM(statistics.economicLoss))) - 1)
+      ELSE TRUNCATE(SUM(statistics.economicLoss), 4)
+    END
+  , 0) AS money $baseQuery";
 $economicLossResult = $conn->query($economicLoss);
 $economicLoss = $economicLossResult->fetch_assoc()["money"] ?? 0;
 
 // Insurance claims
-$insuranceClaims = "SELECT SUM(accidents.insuranceClaims) AS claims $baseQuery";
+$insuranceClaims = "SELECT FORMAT(SUM(accidents.insuranceClaims), 0) AS claims $baseQuery";
 $insuranceClaimsResult = $conn->query($insuranceClaims);
 $insuranceClaims = $insuranceClaimsResult->fetch_assoc()["claims"] ?? 0;
 

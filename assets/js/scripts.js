@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            const cardSection = document.querySelector("card-section");
+            console.log("PHP Response:", data);
+            const cardSection = document.querySelector(".card-section");
 
             // Update the stats dynamically
             cardSection.innerHTML = `
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
 
                 <div class="card-element div-style">
-                    <h2>${data.economicLoss || 0}</h2>
+                    <h2>$${data.economicLoss || 0}K</h2>
                     Economic Loss
                 </div>
 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch((error) => console.error("Error:", error));
 
-        // Graph section
+        /* // Graph section
         fetch('assets/php/graphs.php', {
             method: "POST",
             headers: {
@@ -70,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then((response) => response.json())
         .then((data) => {
-            // Esto afecta al index
+            // Aqui va lo de ustedes
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((error) => console.error("Error:", error)); */
 
     }
 
