@@ -35,7 +35,7 @@ The **Road Accidents Dashboard** is a web-based application designed to visualiz
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/car_accidents_dashboard.git```
+   git clone https://github.com/your-repo/car_accidents_dashboard.git
 2. Import the database:
    - Open your MySQL client or phpMyAdmin.
    - Import the SQL file located at `assets/db/car_accidents-db_2025-05-03.sql`.
